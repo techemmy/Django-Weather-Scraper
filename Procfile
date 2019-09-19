@@ -1,1 +1,1 @@
-web: gunicorn weather.wsgi:application --preload --workers 1
+web: gunicorn the_weather.wsgi
