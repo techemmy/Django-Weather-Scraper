@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section class="hero is-primary" style="font-family: verdana;">
+    <section class="hero is-primary" style="font-family: verdana;background-color: #1fb;">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title" style="text-align: center;height: 10px;">
@@ -46,11 +46,9 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    
+                    {% for city_weather in weather_data %}
                     <div class="box">
-                        
                         <article class="media">
-                            {% for city_weather in weather_data %}
                             <div class="media-left">
                                 <figure class="image is-50x50">
                                     <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
@@ -63,22 +61,20 @@
                                         <br>
                                         <span class="subtitle">{{ city_weather.temperature }}<sup>o</sup>F</span>
                                         <br>{{ city_weather.description }}
+                                        {% for city_weather in city %}
+                                        <form class="float-right" method="post" action="weather_delete/{{ city_weather.id}}/">
+                                            <button name="delete" type="submit" class="btn btn-danger btn-small">Delete</button>                                        
+                                        </form>
+                                        {% endfor %}
 
                                     </p>
 
                                     
                                 </div>
                             </div>
-                            {% endfor %}
                         </article>
-                        
-                        {% for city_weather in city %}
-                        <form class="float-right" method="post" action="weather_delete/{{ city_weather.id}}/">
-                            <button name="delete" type="submit" class="btn btn-danger btn-small">Delete</button>
-                        </form>
-                        {% endfor %}
                     </div>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -89,5 +85,3 @@
 </body>
 
 </html>
-
-                                        

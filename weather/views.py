@@ -1,8 +1,9 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import City
 from .forms import CityForm
 from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=b6a91137bfa65c39d0ef4717fa94898f'
@@ -30,6 +31,14 @@ def index(request):
 
         weather_data.append(city_weather)
 
-    context = {'weather_data': weather_data, 'form': form}
+    context = {'weather_data': weather_data,
+               'form': form,
+               'city' : cities,
+               }
 
     return render(request, 'weather/weather.html',context)
+
+@csrf_exempt
+def weather_delete(request, weather_id):
+    City.objects.get(id=weather_id).delete()
+    return HttpResponseRedirect("/")
