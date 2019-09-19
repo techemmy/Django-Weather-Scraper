@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Weathie</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <section class="hero is-primary" style="background-color: #c82;font-family: verdana;">
+    <section class="hero is-primary" style="font-family: verdana;">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title" style="text-align: center;">
+                <h1 class="title" style="text-align: center;height: 10px;">
                     WEATHIE
                 </h1>
             </div>
@@ -46,9 +46,11 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    {% for city_weather in weather_data %}
+                    
                     <div class="box">
+                        
                         <article class="media">
+                            {% for city_weather in weather_data %}
                             <div class="media-left">
                                 <figure class="image is-50x50">
                                     <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
@@ -61,22 +63,31 @@
                                         <br>
                                         <span class="subtitle">{{ city_weather.temperature }}<sup>o</sup>F</span>
                                         <br>{{ city_weather.description }}
+
                                     </p>
-                                    <form class="float-right" method="post" action=".">
-                                        <button name="delete" type="submit" class="btn btn-danger btn-small">Delete</button>
-                                    </form>
+
+                                    
                                 </div>
                             </div>
+                            {% endfor %}
                         </article>
+                        
+                        {% for city_weather in city %}
+                        <form class="float-right" method="post" action="weather_delete/{{ city_weather.id}}/">
+                            <button name="delete" type="submit" class="btn btn-danger btn-small">Delete</button>
+                        </form>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
+                    
                 </div>
             </div>
         </div>
     </section>
-    <footer class="footer" style="background-color: #c82;text-align: center;color: white;font-family: verdana;">
+    <footer class="footer" style="text-align: center;font-family: verdana;height: 10px;background-color: #1fb;">
         &copy WEATHIE. All Rights Reserved.
     </footer>
 </body>
 
 </html>
+
+                                        
