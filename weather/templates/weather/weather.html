@@ -11,11 +11,11 @@
 </head>
 
 <body>
-    <section class="hero is-primary">
+    <section class="hero is-primary" style="background-color: #c82;font-family: verdana;">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">
-                    What's the weather like?
+                <h1 class="title" style="text-align: center;">
+                    WEATHIE
                 </h1>
             </div>
         </div>
@@ -24,6 +24,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
+                    <h3 style='font-family: verdana;'>Check your weather condition?</h3>
                     <form method="POST">
                         {% csrf_token %}
                         <div class="field has-addons">
@@ -31,7 +32,7 @@
                                 {{ form.name }}
                             </div>
                             <div class="control">
-                                <button type="submit" class="button is-info">
+                                <button type="submit" class="button is-info" style="background-color: #c82;">
                                     Add City
                                 </button>
                             </div>
@@ -61,16 +62,20 @@
                                         <span class="subtitle">{{ city_weather.temperature }}<sup>o</sup>F</span>
                                         <br>{{ city_weather.description }}
                                     </p>
+                                    <form class="float-right" method="post" action=".">
+                                        <button name="delete" type="submit" class="btn btn-danger btn-small">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </article>
                     </div>
                     {% endfor %}
-                </div>
+                /div>
             </div>
         </div>
     </section>
-    <footer class="footer">
+    <footer class="footer" style="background-color: #c82;text-align: center;color: white;font-family: verdana;">
+        &copy WEATHIE. All Rights Reserved.
     </footer>
 </body>
 
