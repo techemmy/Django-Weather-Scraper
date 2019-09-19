@@ -1,1 +1,1 @@
-web: gunicorn my_weather.wsgi --log-file -
+web: gunicorn weather.wsgi:application --preload --workers 1
